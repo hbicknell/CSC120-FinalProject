@@ -8,7 +8,7 @@ public class Player {
     private int agilityScore;
     private int intelligenceScore;
     private int wisdomScore;
-    private int totalCoins;
+    //private int totalCoins;
     ArrayList<Item> playerInventory;
 
     /* Overloaded Constructor */
@@ -19,19 +19,19 @@ public class Player {
         this.agilityScore = 6; 
         this.intelligenceScore = 6;
         this.wisdomScore = 6;
-        this.totalCoins = 0;
+        //this.totalCoins = 0;
         this.playerInventory = new ArrayList<Item>();
     }
     
     /* Full Constructor */
-    public Player(String name, int health, int strength, int agility, int intelligence, int wisdom, int coins) {
+    public Player(String name, int health, int strength, int agility, int intelligence, int wisdom) {
         this.name = name; 
         this.playerHealth = health;
         this.strengthScore = strength; 
         this.agilityScore = agility;
         this.intelligenceScore = intelligence;
         this.wisdomScore = wisdom;
-        this.totalCoins = coins;
+        //this.totalCoins = coins;
         this.playerInventory = new ArrayList<Item>();
     }
     
