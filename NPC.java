@@ -7,4 +7,12 @@ public class NPC {
         this.name = name; 
         this.npcVisualDescription = description; 
     }
+
+    public String getName(){
+        return this.name;
+    }
+
+    public String getNpcDescription(){
+        return this.npcVisualDescription;
+    }
 }
