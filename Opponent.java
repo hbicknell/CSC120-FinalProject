@@ -11,4 +11,12 @@ public class Opponent {
         this.opponentHealth = health;
         this.opponentAlive = true;
     }
+
+    public String getDescription(){
+        return this.opponentVisualDescription;
+    }
+
+    public boolean getOpponentAlive(){
+        return this.opponentAlive;
+    }
 }

@@ -12,7 +12,7 @@ public class NPC {
         return this.name;
     }
 
-    public String getNpcDescription(){
+    public String getDescription(){
         return this.npcVisualDescription;
     }
 }

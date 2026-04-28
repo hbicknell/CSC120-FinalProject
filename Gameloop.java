@@ -4,7 +4,7 @@ public class Gameloop {
     
     public static void main(String[] args) {
         Main main = new Main();
-        Area house = new Area("House", "House Desc");
+        Area house = new Area("The House", "House Desc");
         Player player = new Player(house);
 
         
@@ -55,32 +55,60 @@ public class Gameloop {
             }
         }
 
+        main.beginningDialogue(player, firstTalent, secondTalent, userInput);
+
+        NPC Ariela = main.arielaFirstDialogue(player, userInput);
+
+        System.out.println("What would you like to do?");
+
         
-        System.out.println("There is a figure in front of you, but that is all you can make out about her. Her face and surrondings are a blur, but her voice is clear when she speaks.");
-        System.out.println("\"Hello " + player.getName() + ". Welcome to your new life as an adventurer for hire!\"");
-        main.promptFirstEnter(userInput);
-        System.out.println("\"Here at Hire an Adventurer TM, we've capitalized the average local party of gallavanting saviors into reliable employees and contractors.");
-        main.promptEnter(userInput);
-        System.out.println("And you, yes you! Have just been hired for your stunning resume. I see here your skils in " + firstTalent + " and " + secondTalent + " are emphasised.");
-        main.promptEnter(userInput);
-        System.out.println("We even have a job to start you off! A nice easy intro into this job.");
-        main.promptEnter(userInput);
-        System.out.println("Now standard procedure is you wake up there with no memory but what is essential...");
-        main.promptEnter(userInput);
-        System.out.println("I know unorthodox but this little detail keeps our employees motivated on the job and our retention rate 100%!");
-        main.promptEnter(userInput);
-        System.out.println("So just hold still while I perform a quick spell and in moments you'll start your new job...goodluck!\"");
-
-
-        /** 
         boolean stillPlaying = true; 
         do {
             // ************************************************
             // The stuff that happens in your game will go here
             //  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓
             System.out.println("You are in the loop");
-            userResponse = userInput.nextLine().toUpperCase();
+            userResponse = userInput.nextLine().toLowerCase();
+            String[] allSplitUserResponse = userResponse.split(" "); 
+            String[] firstSplitUserResponse = userResponse.split(" ", 2);
+
+            if (allSplitUserResponse[0].equals("go")){
+                if (allSplitUserResponse[1].equals("onward")){
+                    if (player.getArea() == cave1 && player.getLanternFlag()){
+                        System.out.println("It's too dark to see anything. So you go back to where you were.");
+                    } else if(player.getArea() == cave2 && opponent1.opponentAlive() == true && cave2.getExploredWisdom() == false ){
+                        System.out.println("Your opponent blocks your path");
+                    }else{
+                        player.changePlayerArea(player.getArea().getForwardArea());
+                        System.out.println("You enter" + player.getArea());
+                        System.out.println(player.getArea().getDescription());
+                        System.out.println("You notice " + player.getArea().listAreaItems());
+                    }
+                }else if(allSplitUserResponse[1].equals("back") || allSplitUserResponse[1].equals("backward")){
+                   player.changePlayerArea(player.getArea().getBackArea());
+                    System.out.println("You enter" + player.getArea());
+                    System.out.println(player.getArea().getDescription());
+                    System.out.println("You notice " + player.getArea().listAreaItems());  
+                }else{
+                    System.out.println("Error. Can\'t find command.");
+                }
+            }
+
+            if (allSplitUserResponse[0].equals("describe")){
+                Item itemInArea = player.getArea().areaMatchItem(allSplitUserResponse);
+                Item itemInPlayer = player.playerMatchItem(firstSplitUserResponse);
+                if (itemInArea != null){
+                    itemInArea.getDescription();
+                } else if(itemInPlayer != null){
+                    itemInPlayer.getDescription();
+                } else{
+                    System.out.println("Item not found");
+                }
             
+            
+
+
+
             try{
                 player.userResponse();
             } catch (NoSuchMethodException e) {
@@ -93,12 +121,14 @@ public class Gameloop {
             // ***********************************************************************
             // And as the player interacts, you'll check to see if the game should end
             //  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓
-            if (userResponse.equals("OUT")) {
+            if (userResponse.equals("out")) {
                 stillPlaying = false;
             }
         } while (stillPlaying);
-        */
+        
         // Tidy up
+
+
         userInput.close();
 
         System.out.println("You're out");
