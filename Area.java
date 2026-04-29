@@ -58,7 +58,15 @@ public class Area {
 
     }
 
-   public String listAreaItems(){
+    public void addToArea(Item item){
+        this.areaItems.add(item);
+    }
+
+    public void removeFromArea(Item item){
+        this.areaItems.remove(item);
+    }
+
+    public String listAreaItems(){
         String list = "";
         for(Item item : this.areaItems){
             String stringItem = item.getName();
@@ -82,4 +90,23 @@ public class Area {
         return null;
     }
 
+    public String exploreArea(){
+        String foundItems = "";
+        for(Item item : this.hiddenItems){
+            this.areaItems.add(item);
+            foundItems += item.getName() + ", ";
+        }
+        return foundItems;
+    }
+
+    public static void main(String[] args) {
+        Area area = new Area("house", "house");
+        Item item = new Item("Rock", "Rock");
+        Item item2 = new Item ("f", "f");
+        area.areaItems.add(item2);
+        area.hiddenItems.add(item);
+        System.out.println(area.exploreArea());
+        System.out.println(area.listAreaItems());
+    }
 }
+

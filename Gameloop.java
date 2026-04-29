@@ -63,6 +63,7 @@ public class Gameloop {
 
         
         boolean stillPlaying = true; 
+        int moveCounter = 10;
         do {
             // ************************************************
             // The stuff that happens in your game will go here
@@ -73,22 +74,14 @@ public class Gameloop {
             String[] firstSplitUserResponse = userResponse.split(" ", 2);
 
             if (allSplitUserResponse[0].equals("go")){
-                if (allSplitUserResponse[1].equals("onward")){
-                    if (player.getArea() == cave1 && player.getLanternFlag()){
-                        System.out.println("It's too dark to see anything. So you go back to where you were.");
-                    } else if(player.getArea() == cave2 && opponent1.opponentAlive() == true && cave2.getExploredWisdom() == false ){
-                        System.out.println("Your opponent blocks your path");
-                    }else{
-                        player.changePlayerArea(player.getArea().getForwardArea());
-                        System.out.println("You enter" + player.getArea());
-                        System.out.println(player.getArea().getDescription());
-                        System.out.println("You notice " + player.getArea().listAreaItems());
-                    }
+                if (allSplitUserResponse[1].equals("forward")){
+                    player.changePlayerArea(player.getArea().getForwardArea());
+                    System.out.println("You enter" + player.getArea());
+                    System.out.println(player.getArea().getDescription());
                 }else if(allSplitUserResponse[1].equals("back") || allSplitUserResponse[1].equals("backward")){
                    player.changePlayerArea(player.getArea().getBackArea());
                     System.out.println("You enter" + player.getArea());
-                    System.out.println(player.getArea().getDescription());
-                    System.out.println("You notice " + player.getArea().listAreaItems());  
+                    System.out.println(player.getArea().getDescription()); 
                 }else{
                     System.out.println("Error. Can\'t find command.");
                 }
@@ -104,6 +97,34 @@ public class Gameloop {
                 } else{
                     System.out.println("Item not found");
                 }
+
+            if(allSplitUserResponse[0].equals("explore")){
+                System.out.println("You explore " + player.getArea().getName());
+                String foundItems = player.getArea().exploreArea();
+                System.out.println("You found" + foundItems);
+            }
+
+            if(allSplitUserResponse[0].equals("pick")){
+                Item itemPickUp = player.getArea().areaMatchItem(allSplitUserResponse);
+                if (itemPickUp!= null){
+                    System.out.println("You picked up " + itemPickUp.getName());
+                    player.addToInventory(itemPickUp);
+                    player.getArea().removeFromArea(itemPickUp);
+                }else{
+                    System.out.println("Item not found");
+                }
+            }
+
+            if(allSplitUserResponse[0].equals("put")){
+                 Item itemPutDown = player.playerMatchItem(firstSplitUserResponse);
+                if(itemPutDown != null){
+                    System.out.println("You put down" + itemPutDown.getName());
+                    player.removeFromInventory(itemPutDown);
+                    player.getArea().addToArea(itemPutDown);
+                }else{
+                    System.out.println("Item not found.");
+                }
+            }
             
             
 

@@ -64,6 +64,7 @@ public class Player {
         return this.name;
     }
 
+    /*
     public int getHealth(){
         return this.playerHealth;
     }
@@ -83,11 +84,13 @@ public class Player {
     public int getWisdon(){
         return this.wisdomScore;
     }
+    */
 
     public Area getArea(){
         return this.playerArea;
     }
-
+    
+    /* 
     public boolean getLanternFlag(){
         return this.lanternFlag;
     }
@@ -111,6 +114,7 @@ public class Player {
     public void changeWisdom(int plus){
         this.wisdomScore += plus;
     }
+    */
     public void changePlayerArea(Area area){
         this.playerArea = area;
     }
@@ -126,13 +130,17 @@ public class Player {
         this.playerInventory.add(item);
     }
 
+    public void removeFromInventory(Item item){
+        this.playerInventory.remove(item);
+    }
+
     /* PLAYER COMMANDS COMPANIONS */
 
     /** sleep */
 
     public void sleep(Area area){
         if (this.playerArea == area){
-            this.playerHealth = 20;
+            //this.playerHealth = 20;
             System.out.println("You feel all restored after a nice little rest!");
         } else {
             throw new RuntimeException("Silly you can't sleep here!");
