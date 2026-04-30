@@ -7,23 +7,7 @@ public class Main {
     }
 
     /*THINGS FOR CASE/PLAYER COMMANDS */
-    public void showOptions(){
-
-    }
     //public void exploreArea(Player player, Area area)
-
-    public void areaOnward(Player player, Area house, Area town, Area meadow, Area cave1, Area cave2, Area cave3){
-        if (player.getArea() == house){
-            player.changePlayerArea(town);
-            System.out.println("You enter the" + town.getName());
-            System.out.println(town.getDescription());
-            System.out.println("You notice")
-        }
-    }
-
-
-
-    
 
     /** descriptions commands */
     public void getDescription(Item item){
@@ -47,13 +31,21 @@ public class Main {
 
     /* GAME SETTINGS */
 
-    public void areaSetting(Area house, Area town, Area meadow, Area cave1, Area cave2, Area cave3){
+    /**
+     * setting area
+     * @param house
+     * @param town
+     * @param meadow
+     * @param cave1
+     * @param cave2
+     */
+    public void areaSetting(Area house, Area town, Area meadow, Area cave1, Area cave2){
         house.changeAreas(town, town);
         town.changeAreas(meadow, house);
         meadow.changeAreas(cave1, town);
         cave1.changeAreas(cave2, meadow);
-        cave2.changeAreas(cave3, cave1);
-        cave3.changeAreas(cave2, cave2);
+        cave2.changeAreas(cave1, cave1);
+        //cave3.changeAreas(cave2, cave2);
     }
 
 
@@ -68,20 +60,22 @@ public class Main {
      * @param talentTwo
      * @param scanner
      */
-    public void beginningDialogue(Player player, String talentOne, String talentTwo, Scanner scanner){
+    public void beginningDialogue(Player player, String talentOne, Scanner scanner){
         System.out.println("\n");
         System.out.println("There is a figure in front of you, but that is all you can make out about her. Her face and surrondings are a blur, but her voice is clear when she speaks.");
         System.out.println("\"Hello " + player.getName() + ". Welcome to your new life as an adventurer for hire!\"");
         this.promptFirstEnter(scanner);
         System.out.println("\"Here at Hire an Adventurer TM, we've capitalized the average local party of gallavanting saviors into reliable employees and contractors.");
         this.promptEnter(scanner);
-        System.out.println("And you, yes you! Have just been hired for your stunning resume. I see here your skils in " + talentOne + " and " + talentTwo + " are emphasised.");
+        System.out.println("And you, yes you! Have just been hired for your stunning resume. I see here your skill in " + talentOne + " is emphasised.");
         this.promptEnter(scanner);
         System.out.println("We even have a job to start you off! A nice easy intro into this job.");
         this.promptEnter(scanner);
         System.out.println("Now standard procedure is you wake up there with no memory but what is essential...");
         this.promptEnter(scanner);
         System.out.println("I know unorthodox but this little detail keeps our employees motivated on the job and our retention rate 100%!");
+        this.promptEnter(scanner);
+        System.out.println("Now! Quick warning, this one has not paid for very much time with you completing her request so I suggest you be quick with completng it. Or who knows what will happen!");
         this.promptEnter(scanner);
         System.out.println("So just hold still while I perform a quick spell and in moments you'll start your new job...goodluck!\"");
         System.out.println("\n");
@@ -94,7 +88,7 @@ public class Main {
      * @return NPC
      */
     public NPC arielaFirstDialogue(Player player, Scanner scanner){
-        NPC Ariela = new NPC("Ariela", "Short young woman with a kind face and dark brown eyes. She is wearing an apron covered in flour.");
+        NPC Ariela = new NPC("Ariela", "short young woman with a kind face and dark brown eyes. She is wearing an apron covered in flour.");
         System.out.println("You open your eyes to what appears to be a " + Ariela.getDescription());
         this.promptEnter(scanner);
         System.out.println("\"Oh hi! You\'re awake! They told me it wouldn\'t be too long before you did but I was skeptical…you seemed pretty knocked out.");
@@ -120,7 +114,7 @@ public class Main {
                 break;
             }
         }
-        System.out.println("\"Great! Well I\'ll leave you to it. This is my house, and this little room is for you. You\'re welcome to use that bed if you need a rest, I wish you luck!\"");
+        System.out.println("\"Great! I could only afford to hire you for a little bit so please hurry! Good luck! \"");
         System.out.println("She leaves the room.");
         return Ariela;
     }
@@ -141,7 +135,7 @@ public class Main {
         Area area1 = new Area("1", "1");
         Area area2 = new Area("2","2");
         Player mainplayer = new Player(area1);
-        main.
+        
         //Scanner mainscanner = new Scanner(System.in);
        //main.arielaFirstDialogue(mainplayer, mainscanner);
         //main.promptEnter();

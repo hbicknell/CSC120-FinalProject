@@ -62,6 +62,10 @@ public class Area {
         this.areaItems.add(item);
     }
 
+    public void addToHiddenArea(Item item){
+        this.hiddenItems.add(item);
+    }
+
     public void removeFromArea(Item item){
         this.areaItems.remove(item);
     }
@@ -80,9 +84,10 @@ public class Area {
 
    public Item areaMatchItem( String[] userList){
         for(Item areaItem : this.areaItems){ 
+            String areaItemLowerCase = areaItem.getName().toLowerCase();
             for(String item : userList){
                 String itemLowercase = item.toLowerCase();
-                if(areaItem.getName().contains(itemLowercase)){
+                if(areaItemLowerCase.contains(itemLowercase)){
                     return areaItem;
                 }
             }

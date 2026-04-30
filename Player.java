@@ -3,42 +3,38 @@ import java.util.ArrayList;
 public class Player {
    
     private String name;
-    /* 
-    private int playerHealth;
+     
+    //private int playerHealth;
     private int strengthScore;
-    private int agilityScore;
+    //private int agilityScore;
     private int intelligenceScore;
-    private int wisdomScore;
+    //private int wisdomScore;
     //private int totalCoins;
-    private boolean lanternFlag;
-    */
+    //private boolean lanternFlag;
+    
     private Area playerArea;
     ArrayList<Item> playerInventory;
 
     /* Overloaded Constructor */
     public Player(){
-        this.name = "???";
-       /* 
-        this.playerHealth = 20;
+        this.name = "???"; 
+        //this.playerHealth = 20;
         this.strengthScore = 6; 
-        this.agilityScore = 6; 
+        //this.agilityScore = 6; 
         this.intelligenceScore = 6;
-        this.wisdomScore = 6;
-        this.lanternFlag = false;
-        */
+        //this.wisdomScore = 6;
+        //this.lanternFlag = false;
         this.playerInventory = new ArrayList<Item>();
     }
 
     public Player(Area area){
         this.name = "???";
-       /* 
-        this.playerHealth = 20;
+        //this.playerHealth = 20;
         this.strengthScore = 6; 
-        this.agilityScore = 6; 
+        //this.agilityScore = 6; 
         this.intelligenceScore = 6;
-        this.wisdomScore = 6;
-        this.lanternFlag = false;
-        */
+        //this.wisdomScore = 6;
+        //this.lanternFlag = false;
         this.playerArea = area;
         this.playerInventory = new ArrayList<Item>();
     }
@@ -64,21 +60,21 @@ public class Player {
         return this.name;
     }
 
-    /*
+    public int getStrength(){
+        return this.strengthScore;
+    }
+    
+    public int getIntelligence(){
+        return this.intelligenceScore;
+    }
+
+    /* 
     public int getHealth(){
         return this.playerHealth;
     }
 
-    public int getStrength(){
-        return this.strengthScore;
-    }
-
     public int getAgility(){
         return this.agilityScore;
-    }
-
-    public int getIntelligence(){
-        return this.intelligenceScore;
     }
 
     public int getWisdon(){
@@ -95,26 +91,31 @@ public class Player {
         return this.lanternFlag;
     }
 
+    */
+
     public void changeName(String newName){
         this.name = newName;
     }
 
+     
     public void changeStrength(int plus){
         this.strengthScore += plus;
-    }
-
-    public void changeAgility(int plus){
-        this.agilityScore += plus;
     }
 
     public void changeIntelligence(int plus){
         this.intelligenceScore += plus;
     }
 
+    /* 
+    public void changeAgility(int plus){
+        this.agilityScore += plus;
+    }
+
     public void changeWisdom(int plus){
         this.wisdomScore += plus;
     }
     */
+   
     public void changePlayerArea(Area area){
         this.playerArea = area;
     }
@@ -134,10 +135,17 @@ public class Player {
         this.playerInventory.remove(item);
     }
 
+    public boolean inventoryContainsObject(Item item){
+        if(this.playerInventory.contains(item)){
+            return true;
+        }
+        return false;
+    }
+
     /* PLAYER COMMANDS COMPANIONS */
 
     /** sleep */
-
+    /* 
     public void sleep(Area area){
         if (this.playerArea == area){
             //this.playerHealth = 20;
@@ -146,12 +154,14 @@ public class Player {
             throw new RuntimeException("Silly you can't sleep here!");
         }
     }
+        */
 
      public Item playerMatchItem(String[] userList){
         for(Item inventoryItem : this.playerInventory){ 
+            String inventoryItemLowerCase = inventoryItem.getName().toLowerCase();
             for(String item : userList){
-                String itemLowercase = item.toLowerCase();
-                if(inventoryItem.getName().contains(itemLowercase)){
+                //String itemLowercase = item.toLowerCase();
+                if(inventoryItemLowerCase.contains(item)){
                     return inventoryItem;
                 }
             }
@@ -160,10 +170,28 @@ public class Player {
     }
 
 
+    public boolean containAnySphere(Item rock1, Item rock2, Item rock3){
+        if(this.playerInventory.contains(rock1) || this.playerInventory.contains(rock2) || this.playerInventory.contains(rock3)){
+            return true;
+        }
+        return false;
+    }
+
+    public int spheresPlayerContains( Item rock1, Item rock2, Item rock3){
+        int rockCount = 0;
+        if(this.playerInventory.contains(rock1)){
+            rockCount += 1;
+        }
+        if(this.playerInventory.contains(rock2)){
+            rockCount += 1;
+        }
+        if(this.playerInventory.contains(rock3)){
+            rockCount += 1;
+        }
+        return rockCount;
+    }
 
 
-
-    //public void pickUpItem();
     
     public static void main(String[] args) {
         Player player = new Player();

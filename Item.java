@@ -11,15 +11,6 @@ public class Item {
         //this.cost = 0;
         this.inPlayerInventory = false;
     }
-    
-    /** overlaoded constructor 
-    public Item (String name, String description){
-        this.name = name; 
-        this.itemDescription = description;
-        //this.cost = cost;
-        this.inPlayerInventory = false;
-    }
-        */
 
     /*default constructor */
     public Item(String name, String description, boolean inInventory){
