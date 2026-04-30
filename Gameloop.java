@@ -59,11 +59,11 @@ public class Gameloop {
         NPC Ariela = main.arielaFirstDialogue(player, userInput);
 
         /* MOVE COUNTER SET UP AND EXPLANATION */
-        int moveCounter = 18;
+        int moveCounter = 23;
 
         System.out.println("As the woman said, this is a short job!");
         main.promptEnter(userInput);
-        System.out.println("You must complete this job in " + moveCounter + " actions or you'll get a negative performace review and be uneployed again!");
+        System.out.println("You must complete this job in " + moveCounter + " actions or you'll get a negative performace review and be unemployed again!");
         System.out.println("You will be told in the options bar if a command costs an action. Good luck!");
         main.promptEnter(userInput);
        
@@ -201,18 +201,18 @@ public class Gameloop {
                 }else if(player.getArea() == cave2){
                     System.out.println("OPTIONS AVAILABLE:");
                     System.out.println("Go Forward or Backward [1 Action]");
-                    System.out.println("Describe [OBJECT]");
+                    System.out.println("Describe [OBJECT NAME]");
                     System.out.println("Explore [1 Action]");
-                    System.out.println("Pick Up [1 Action]");
-                    System.out.println("Put Down [1 Action]");
+                    System.out.println("Pick Up [OBJECT NAME] [1 Action]");
+                    System.out.println("Put Down [OBJECT NAME] [1 Action]");
                     System.out.println("Investigate Box");
                 }else{
                     System.out.println("OPTIONS AVAILABLE:");
                     System.out.println("Go Forward or Backward [1 Action]");
                     System.out.println("Describe [OBJECT]");
                     System.out.println("Explore [1 Action]");
-                    System.out.println("Pick Up [1 Action]");
-                    System.out.println("Put Down [1 Action]");
+                    System.out.println("Pick Up [OBJECT NAME] [1 Action]");
+                    System.out.println("Put Down [OBJECT NAME] [1 Action]");
                 }
                     
             }
