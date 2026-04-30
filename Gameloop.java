@@ -89,7 +89,7 @@ public class Gameloop {
                 } else if (allSplitUserResponse[1].equals("forward")){
                     boolean specialFlag = false;
                     if(player.getArea() == cave1 && player.playerInventory.contains(key) && door.getLockedStatus() == true){  
-                        System.out.println("You try the door and notice it it locked. However you remember the key you picked up earlier. Would you like to try the key?");
+                        System.out.println("You try the door and notice it it locked. However you remember the key you picked up earlier. Would you like to try the key? YES or NO");
                         while(true){
                             userResponse = userInput.nextLine().toLowerCase();
                             if(userResponse.equals("yes")){
@@ -101,7 +101,7 @@ public class Gameloop {
                                 specialFlag = true;
                                 break;
                             }else{
-                                System.out.println("Yes or no?");
+                                System.out.println("Yes or No?");
                             }
                         }
                     }else if(player.getArea() == cave1 && door.getLockedStatus() == true ){
@@ -224,9 +224,10 @@ public class Gameloop {
                 main.promptEnter(userInput);
                 System.out.println("Each slot has a painted dot in front of it. The first one has a green dot. The second has a yellow dot. The third one has an orange dot.");
                 if(player.getIntelligence() > 6 && player.containAnySphere(redrock, purplerock, bluerock)){
-                    System.out.println("You notice that the colors do not match anything you may have in your inventory. But you do notice that a dot may be the opposite color of the " + player.spheresPlayerContains(redrock, purplerock, bluerock) + " rocks in your inventory");
+                    main.promptEnter(userInput);
+                    System.out.println("You notice that the colors do not match anything you may have in your inventory. But you do notice that each dot may be the opposite color of each of the " + player.spheresPlayerContains(redrock, purplerock, bluerock) + " rocks in your inventory");
                 }
-                System.out.println("Would you like to insert objects into the slots? YES[ 1 Action] or NO?");
+                System.out.println("Would you like to insert objects into the slots? YES [1 Action] or NO?");
                 boolean investigateBox = false;
                 while(true){
                     userResponse = userInput.nextLine().toLowerCase();
