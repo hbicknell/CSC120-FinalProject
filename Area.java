@@ -19,6 +19,7 @@ public class Area {
         this.hiddenItems = new ArrayList<Item>();
     }
 
+    /** GETTERS FOR EVERYTHING EXCEPT HIDDEN ITEMS */
     public String getName(){
         return this.name;
     }
@@ -39,24 +40,34 @@ public class Area {
         return this.areaItems;
     }
 
+    /**
+     * changes areas forward area
+     * @param area
+     */
     public void changeForwardArea(Area area){
         this.forwardArea = area;
     }
 
+    /**
+     * changes areas backward area
+     * @param area
+     */
     public void changeBackArea(Area area){
         this.backwardArea = area;
     }
 
+    /**
+     * changes the forward and backwards area of area
+     * @param forward
+     * @param backward
+     */
     public void changeAreas(Area forward, Area backward){
         this.forwardArea = forward;
         this.backwardArea = backward;
     }
 
 
-    public void itemsInHouse(){
-        //add items to list
-
-    }
+    /** AREA ITEMS MANIPULATION */
 
     public void addToArea(Item item){
         this.areaItems.add(item);
@@ -70,6 +81,10 @@ public class Area {
         this.areaItems.remove(item);
     }
 
+    /**
+     * items in area to string
+     * @return list
+     */
     public String listAreaItems(){
         String list = "";
         for(Item item : this.areaItems){
@@ -82,6 +97,11 @@ public class Area {
 
    /* PLAYER COMMANDS COMPANION */
 
+   /**
+    * matches what the player has typed in to if it is an item in the area
+    * @param userList
+    * @return item or null
+    */
    public Item areaMatchItem( String[] userList){
         for(Item areaItem : this.areaItems){ 
             String areaItemLowerCase = areaItem.getName().toLowerCase();
@@ -95,6 +115,10 @@ public class Area {
         return null;
     }
 
+    /**
+     * transfers items from hidden list to area items list and lists what was transferred in a string
+     * @return items
+     */
     public String exploreArea(){
         String foundItems = "";
         for(Item item : this.hiddenItems){

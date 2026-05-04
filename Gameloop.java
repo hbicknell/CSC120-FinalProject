@@ -1,10 +1,9 @@
 import java.util.Scanner;
-import java.util.*;
 
 public class Gameloop {
     
     public static void main(String[] args) {
-       /**OBJECT SETUP */
+    /**OBJECT SETUP */
         Main main = new Main();
         Area house = new Area("The House", "It is a small little room, decorated sparingly.");
         Area town = new Area("The Town", "A small town, it seems rather empty but has a few houses and shops.");
@@ -53,12 +52,12 @@ public class Gameloop {
             }
         }
 
-        /*BEGINNING DIALOGUE */
+    /*BEGINNING DIALOGUE */
         main.beginningDialogue(player, firstTalent, userInput);
 
         NPC Ariela = main.arielaFirstDialogue(player, userInput);
 
-        /* MOVE COUNTER SET UP AND EXPLANATION */
+    /* MOVE COUNTER SET UP AND EXPLANATION */
         int moveCounter = 23;
 
         System.out.println("As the woman said, this is a short job!");
@@ -80,8 +79,7 @@ public class Gameloop {
         /* USER RESPONSE SET UP  */
             userResponse = userInput.nextLine().trim().toLowerCase();
             String[] allSplitUserResponse = userResponse.split(" "); 
-            String[] firstSplitUserResponse = userResponse.split(" ", 2);
-
+           
         /* IF PLAYER SAYS GO */
             if (allSplitUserResponse[0].equals("go")){
                 if(allSplitUserResponse.length < 2){
@@ -201,18 +199,18 @@ public class Gameloop {
                 }else if(player.getArea() == cave2){
                     System.out.println("OPTIONS AVAILABLE:");
                     System.out.println("Go Forward or Backward [1 Action]");
-                    System.out.println("Describe [OBJECT NAME]");
+                    System.out.println("Describe [ITEM NAME]");
                     System.out.println("Explore [1 Action]");
-                    System.out.println("Pick Up [OBJECT NAME] [1 Action]");
-                    System.out.println("Put Down [OBJECT NAME] [1 Action]");
+                    System.out.println("Pick Up [ITEM NAME] [1 Action]");
+                    System.out.println("Put Down [ITEM NAME] [1 Action]");
                     System.out.println("Investigate Box");
                 }else{
                     System.out.println("OPTIONS AVAILABLE:");
                     System.out.println("Go Forward or Backward [1 Action]");
-                    System.out.println("Describe [OBJECT]");
+                    System.out.println("Describe [ITEM NAME]");
                     System.out.println("Explore [1 Action]");
-                    System.out.println("Pick Up [OBJECT NAME] [1 Action]");
-                    System.out.println("Put Down [OBJECT NAME] [1 Action]");
+                    System.out.println("Pick Up [ITEM NAME] [1 Action]");
+                    System.out.println("Put Down [ITEM NAME] [1 Action]");
                 }
                     
             }
@@ -296,10 +294,8 @@ public class Gameloop {
             }
 
             System.out.println("ACTIONS LEFT " + moveCounter);
-            // ***********************************************************************
-            // And as the player interacts, you'll check to see if the game should end
-            //  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓
-            
+           
+        /** WIN OR LOSE CHECK */
             if(puzzle.getSolved() == true){
                 System.out.println("Congratulations you got the recipe and completed your job! You won't get fired!");
                 stillPlaying = false;

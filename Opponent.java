@@ -12,6 +12,10 @@ public class Opponent {
         this.opponentAlive = true;
     }
 
+    /** GETTERS FOR ATTRIBUTES */
+    public String getName(){
+        return this.name;
+    }
     public String getDescription(){
         return this.opponentVisualDescription;
     }
@@ -19,4 +23,9 @@ public class Opponent {
     public boolean getOpponentAlive(){
         return this.opponentAlive;
     }
+
+    public int getOpponentHealth(){
+        return this.opponentHealth;
+    }
+
 }

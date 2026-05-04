@@ -20,12 +20,28 @@ public class Item {
         this.inPlayerInventory = inInventory;
     }
 
+    /**
+     * getter for name
+     * @return
+     */
     public String getName(){
         return this.name;
     }
 
+    /**
+     * getter for description
+     * @return
+     */
     public String getDescription(){
         return this.itemDescription;
+    }
+
+    /**
+     * getter for if in inventory
+     * @return
+     */
+    public boolean getInventory(){
+        return this.inPlayerInventory;
     }
 
 

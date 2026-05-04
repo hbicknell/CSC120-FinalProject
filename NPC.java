@@ -8,10 +8,18 @@ public class NPC {
         this.npcVisualDescription = description; 
     }
 
+    /**
+     * getter for name
+     * @return
+     */
     public String getName(){
         return this.name;
     }
 
+    /**
+     * getter for description
+     * @return
+     */
     public String getDescription(){
         return this.npcVisualDescription;
     }

@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -7,9 +6,11 @@ public class Main {
     }
 
     /*THINGS FOR CASE/PLAYER COMMANDS */
-    //public void exploreArea(Player player, Area area)
 
-    /** descriptions commands */
+    /** descriptions command getters 
+     * NOTE: this was designed with the thought in mind that the player could type in description and get a description of anything
+    */
+
     public void getDescription(Item item){
         System.out.println(item.getDescription());
     }
@@ -29,7 +30,7 @@ public class Main {
 
 
 
-    /* GAME SETTINGS */
+    /* GAME SETTING UP */
 
     /**
      * setting area
@@ -93,8 +94,8 @@ public class Main {
         this.promptEnter(scanner);
         System.out.println("\"Oh hi! You\'re awake! They told me it wouldn\'t be too long before you did but I was skeptical…you seemed pretty knocked out.");
         System.out.println("My name\'s " + Ariela.getName() + ", do you know yours?\"");
-        this.promptEnter(scanner);
         System.out.println("You tell her your name: \"It's " + player.getName() + ".\"\n");
+        this.promptEnter(scanner);
         System.out.println(" \"Oh that\'s lovely. They told me that they wiped your non-essential memory for…oh what was it? Mission effectiveness? Efficiency? I\'m not really sure there was a lot of jargon.");
         this.promptEnter(scanner);
         System.out.println("Anyways, I\'ve hired you because I need you to get something from the local cave. You see, I come from a long line of bakers and we\'ve been in this town forever!");
@@ -120,24 +121,22 @@ public class Main {
     }
 
     /** prompt enter */
+   
+    /**
+     * prompts user enter
+     * @param scanner
+     */
     public void promptEnter(Scanner scanner){
         scanner.nextLine();
     }
 
+    /**
+     * prompts first enter by printing
+     * @param scanner
+     */
     public void promptFirstEnter(Scanner scanner){
         System.out.println("Press ENTER to Continue...");
         scanner.nextLine();
     }
 
-
-    public static void main(String[] args) {
-        Main main = new Main();
-        Area area1 = new Area("1", "1");
-        Area area2 = new Area("2","2");
-        Player mainplayer = new Player(area1);
-        
-        //Scanner mainscanner = new Scanner(System.in);
-       //main.arielaFirstDialogue(mainplayer, mainscanner);
-        //main.promptEnter();
-    }
 }

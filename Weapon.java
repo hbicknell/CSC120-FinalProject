@@ -6,4 +6,9 @@ public class Weapon extends Item {
         super(name,description, inPlayerInventory);
         this.damageModifier = mod;
     }
+
+    /**GETTERS FOR ATTRIBUTES */
+    public int getDamageModifier(){
+        return this.damageModifier;
+    }
 }

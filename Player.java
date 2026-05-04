@@ -15,6 +15,7 @@ public class Player {
     private Area playerArea;
     ArrayList<Item> playerInventory;
 
+
     /* Overloaded Constructor */
     public Player(){
         this.name = "???"; 
@@ -27,6 +28,7 @@ public class Player {
         this.playerInventory = new ArrayList<Item>();
     }
 
+    /*Overloaded Constructor with Area */
     public Player(Area area){
         this.name = "???";
         //this.playerHealth = 20;
@@ -55,7 +57,7 @@ public class Player {
         this.playerInventory = new ArrayList<Item>();
     }
 
-    /** your standard getters and changeers/accessors */
+    /** GETTERS FOR ATTRIBUTES */
     public String getName(){
         return this.name;
     }
@@ -93,6 +95,7 @@ public class Player {
 
     */
 
+    /** MANIPULATORS FOR ATTRIBUTES */
     public void changeName(String newName){
         this.name = newName;
     }
@@ -120,21 +123,37 @@ public class Player {
         this.playerArea = area;
     }
 
-    /** inventory things */
+
+    /**INVENTORY INTERACTION */
+
+    /** Lists inventory as a string */
     public void listInventory(){
         System.out.println("Items in your inventory:");
         for (Item item : this.playerInventory) {
             System.out.println(item.getName());
         }
     }
+    /**
+     * add to inventory
+     * @param item
+     */
     public void addToInventory(Item item){
         this.playerInventory.add(item);
     }
 
+    /**
+     * removes from inventory
+     * @param item
+     */
     public void removeFromInventory(Item item){
         this.playerInventory.remove(item);
     }
 
+    /**
+     * identifies if the item passed is in the players inventory
+     * @param item
+     * @return boolean
+     */
     public boolean inventoryContainsObject(Item item){
         if(this.playerInventory.contains(item)){
             return true;
@@ -156,6 +175,11 @@ public class Player {
     }
         */
 
+    /**
+     * identifies if what the user typed in matches an item object in the players inventory
+     * @param userList
+     * @return item or null
+     */
      public Item playerMatchItem(String[] userList){
         for(Item inventoryItem : this.playerInventory){ 
             String inventoryItemLowerCase = inventoryItem.getName().toLowerCase();
@@ -169,7 +193,13 @@ public class Player {
         return null;
     }
 
-
+    /**
+     * identifies if player contains a sphere needed for puzzle
+     * @param rock1
+     * @param rock2
+     * @param rock3
+     * @return boolean
+     */
     public boolean containAnySphere(Item rock1, Item rock2, Item rock3){
         if(this.playerInventory.contains(rock1) || this.playerInventory.contains(rock2) || this.playerInventory.contains(rock3)){
             return true;
@@ -177,6 +207,13 @@ public class Player {
         return false;
     }
 
+    /**
+     * identifies how many spheres player contains
+     * @param rock1
+     * @param rock2
+     * @param rock3
+     * @return int
+     */
     public int spheresPlayerContains( Item rock1, Item rock2, Item rock3){
         int rockCount = 0;
         if(this.playerInventory.contains(rock1)){

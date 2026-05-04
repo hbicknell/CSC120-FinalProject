@@ -9,6 +9,10 @@ public class Trader extends NPC {
         this.traderInventory = new ArrayList<Item>();
     }
 
+    /**GETTERS FOR ATTRIBUTES */
+    public ArrayList<Item> getTraderInventory(){
+        return this.traderInventory;
+    }
 
 
 }
