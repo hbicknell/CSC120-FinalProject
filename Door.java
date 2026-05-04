@@ -5,10 +5,15 @@ public class Door {
         this.locked = locked;
     }
 
+    /**
+     * getter for door locked status
+     * @return boolean
+     */
     public boolean getLockedStatus(){
         return this.locked;
     }
 
+    /** Changers for locked flag of door*/
     public void unlock(){
         this.locked = false;
     }
